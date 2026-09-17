@@ -1,0 +1,1234 @@
+
+
+:root {
+    --background: #FFF;
+    --background-dark: #8d7568;
+
+    --white: #978174;
+    --white-soft: #978174 ;
+    --white-muted: #8d7568;
+
+    --border: #978174;
+
+    --black: #111111;
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family:
+        "Bodoni MT",
+         "Bodoni 72",
+            Didot,
+        "Playfair Display", serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+
+    background: var(--background);
+    color: var(--white);
+
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =====================================================
+   PAGE LOADER
+===================================================== */
+
+.page-loader { position: fixed; inset: 0; width: 100%; height: 100vh; height: 100dvh; background: var(--background); z-index: 9999; display: flex; align-items: center; justify-content: center; pointer-events: none; animation: loaderOut 1s ease forwards; animation-delay: 1.2s; }
+
+.loader-logo { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; width: 100%; }
+.loader-logo img:first-child { width: 75px; height: 75px; object-fit: contain; opacity: 0; animation: logoSymbolIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; } 
+/* ===================================================== LOGO NAME ===================================================== */ 
+.loader-logo img:last-child { width: 230px; height: auto; max-width: 70vw; object-fit: contain; opacity: 0; animation: logoNameIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.15s forwards; }
+
+@keyframes logoSymbolIn { from { opacity: 0; transform: translateY(-15px) scale(0.85); } to { opacity: 1; transform: translateY(0) scale(1); } } /* ===================================================== NAME ANIMATION ===================================================== */ 
+@keyframes logoNameIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } } /* ===================================================== LOADER EXIT ===================================================== */ 
+@keyframes loaderOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } } /* ===================================================== TABLET ===================================================== */ 
+@media (max-width: 768px) { .loader-logo { gap: 15px; } .loader-logo img:first-child { width: 60px; height: 60px; } .loader-logo img:last-child { width: 190px; } } /* ===================================================== MOBILE ===================================================== */ 
+@media (max-width: 480px) { .loader-logo { gap: 13px; } .loader-logo img:first-child { width: 52px; height: 52px; } .loader-logo img:last-child { width: 160px; max-width: 75vw; } } /* ===================================================== SMALL MOBILE ===================================================== */ 
+@media (max-width: 350px) { .loader-logo { gap: 10px; } .loader-logo img:first-child { width: 45px; height: 45px; } .loader-logo img:last-child { width: 140px; } } 
+/* ===================================================== REDUCED MOTION ===================================================== */ 
+@media (prefers-reduced-motion: reduce) { .page-loader, .loader-logo img { animation: none; } .page-loader { opacity: 0; visibility: hidden; } }
+
+
+@keyframes loaderLogo {
+
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes loaderOut {
+
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header {
+    width: 100%;
+
+    min-height: 105px;
+
+    padding: 0 clamp(20px, 5vw, 70px);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--border);
+
+    position: relative;
+    z-index: 10;
+}
+
+
+/* =====================================================
+   EVENT LOGO
+===================================================== */
+
+.event-logo {
+    display: flex;
+    align-items: center;
+
+    gap: clamp(10px, 1.5vw, 18px);
+
+    min-width: 0;
+}
+
+
+/* =====================================================
+   LOGO SYMBOL
+===================================================== */
+
+.logo-symbol {
+    width: clamp(42px, 4.5vw, 63px);
+    height: clamp(42px, 4.5vw, 63px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+    
+}
+
+.logo-symbol img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+
+/* =====================================================
+   LOGO NAME
+===================================================== */
+
+.logo-name {
+    display: flex;
+    align-items: center;
+
+    min-width: 0;
+}
+
+.logo-name img {
+    width: clamp(125px, 15vw, 205px);
+
+    height: auto;
+
+    max-height: 100px;
+
+    object-fit: contain;
+    margin-top:  5px;
+    margin-bottom:  10px;
+}
+
+
+/* =====================================================
+   HEADER TITLE
+===================================================== */
+
+.header-title {
+    font-size: 10px;
+    font-weight: 600;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    opacity: 0.9;
+}
+
+
+/* =====================================================
+   HEADER NUMBER
+===================================================== */
+
+.header-number {
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: var(--white-muted);
+
+    text-align: right;
+
+    flex-shrink: 0;
+}
+
+
+/* =====================================================
+   PRODUCT PAGE
+===================================================== */
+
+.product-page {
+    width: min(1400px, calc(100% - 80px));
+
+    margin: 0 auto;
+
+    min-height: calc(100vh - 105px);
+
+    padding: clamp(45px, 6vw, 80px) 0;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.05fr)
+        minmax(360px, 0.75fr);
+
+    gap: clamp(45px, 7vw, 110px);
+
+    align-items: center;
+}
+
+
+/* =====================================================
+   PRODUCT VISUAL
+===================================================== */
+
+.product-visual {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-wrapper img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+
+/* =====================================================
+   IMAGE HOVER
+===================================================== */
+
+.product-visual:hover .image-wrapper img {
+    transform: scale(1.045);
+}
+
+
+/* =====================================================
+   IMAGE CAPTION
+===================================================== */
+
+.image-caption {
+    position: absolute;
+
+    z-index: 3;
+
+    bottom: 25px;
+    left: 28px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.image-caption span {
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    color: var(--white-muted);
+}
+
+.image-caption strong {
+    font-family:
+        "Bodoni MT",
+         "Bodoni 72",
+            Didot,
+        "Playfair Display", serif;
+
+    font-size: 17px;
+
+    letter-spacing: 1px;
+}
+
+
+
+/* =====================================================
+   PRODUCT INFORMATION
+===================================================== */
+
+.product-information {
+    width: 100%;
+    max-width: 570px;
+
+    min-width: 0;
+}
+
+
+/* =====================================================
+   COMPANY
+===================================================== */
+
+.company {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 28px;
+}
+
+.company-logo {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.45);
+
+    border-radius: 50%;
+
+    padding: 7px;
+
+    flex-shrink: 0;
+}
+
+.company-logo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+.company-name span {
+    display: block;
+
+    font-size: 8px;
+
+    letter-spacing: 2.5px;
+
+    color: var(--white-muted);
+
+    margin-bottom: 4px;
+}
+
+.company-name strong {
+    font-size: 13px;
+
+    font-weight: 500;
+}
+
+
+/* =====================================================
+   CATEGORY
+===================================================== */
+
+.product-category {
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: var(--white-muted);
+
+    margin-bottom: 22px;
+}
+
+
+/* =====================================================
+   PRODUCT TITLE
+===================================================== */
+
+h1 {
+    font-family:
+        "Bodoni MT",
+         "Bodoni 72",
+            Didot,
+        "Playfair Display", serif;
+
+    font-size: clamp(55px, 7vw, 105px);
+
+    line-height: 0.86;
+
+    font-weight: 500;
+
+    letter-spacing: clamp(-4px, -0.3vw, -2px);
+
+    text-transform: uppercase;
+
+    word-break: normal;
+}
+
+h1 span {
+    display: block;
+
+    font-style: italic;
+
+    font-weight: 400;
+
+    color: rgba(255, 255, 255, 0.52);
+
+    margin-left: 30px;
+}
+
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
+.description {
+    width: 100%;
+    max-width: 530px;
+
+    margin-top: 35px;
+
+    color: var(--white-soft);
+
+    font-size: 14px;
+
+    line-height: 1.85;
+}
+
+.second-description {
+    margin-top: 8px;
+}
+
+
+/* =====================================================
+   INFORMATION
+===================================================== */
+
+.information {
+    width: 100%;
+
+    margin-top: 38px;
+
+    border-top: 1px solid var(--border);
+}
+
+.information-row {
+    min-height: 65px;
+
+    display: grid;
+
+    grid-template-columns: 145px minmax(0, 1fr);
+
+    gap: 15px;
+
+    align-items: center;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.information-row span {
+    font-size: 8px;
+
+    letter-spacing: 2.5px;
+
+    color: var(--white-muted);
+}
+
+.information-row strong {
+    font-size: 12px;
+
+    font-weight: 500;
+
+    line-height: 1.7;
+
+    overflow-wrap: break-word;
+}
+
+.information-row em {
+    font-style: normal;
+
+    color: var(--white-soft);
+}
+
+
+/* =====================================================
+   ENQUIRY BUTTON
+===================================================== */
+
+.company-button {
+    width: 100%;
+
+    min-height: 64px;
+
+    margin-top: 35px;
+
+    padding: 0 25px;
+
+    border: 1px solid #978174;
+    /* border: #978174; */
+
+    background: transparent;
+
+    color: var(--white);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    cursor: pointer;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        color 0.35s ease,
+        border-color 0.35s ease,
+        transform 0.35s ease;
+}
+
+.company-button::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: var(--white);
+
+    transform: translateX(-101%);
+
+    transition:
+        transform 0.45s cubic-bezier(0.77, 0, 0.18, 1);
+
+    z-index: 0;
+}
+
+.company-button span,
+.company-button strong {
+    position: relative;
+
+    z-index: 1;
+}
+
+.company-button span {
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 2.5px;
+}
+
+.company-button strong {
+    font-size: 24px;
+
+    font-weight: 400;
+
+    transition: transform 0.35s ease;
+}
+
+.company-button:hover::before {
+    transform: translateX(0);
+}
+
+.company-button:hover {
+    color: var(--background);
+
+    border-color: var(--white);
+
+    transform: translateY(-3px);
+}
+
+.company-button:hover strong {
+    transform: translate(6px, -6px);
+}
+
+
+/* =====================================================
+   SOURCE NOTE
+===================================================== */
+
+.source-note {
+    margin-top: 15px;
+
+    font-size: 9px;
+
+    line-height: 1.7;
+
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.source-note span {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+
+
+/* =====================================================
+   PAGE ANIMATION
+===================================================== */
+
+.header,
+.product-visual,
+.product-information,
+footer {
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    animation:
+        reveal 0.8s ease forwards;
+}
+
+.header {
+    animation-delay: 1s;
+}
+
+.product-visual {
+    animation-delay: 1.15s;
+}
+
+.product-information {
+    animation-delay: 1.3s;
+}
+
+footer {
+    animation-delay: 1.45s;
+}
+
+@keyframes reveal {
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =====================================================
+   TABLET
+   901px — 1100px
+===================================================== */
+
+@media (max-width: 1100px) {
+
+    .product-page {
+        width: calc(100% - 50px);
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(320px, 0.8fr);
+
+        gap: 45px;
+    }
+
+    h1 {
+        font-size: clamp(55px, 7vw, 78px);
+    }
+
+    .description {
+        font-size: 13px;
+    }
+
+    .information-row {
+        grid-template-columns: 120px minmax(0, 1fr);
+    }
+
+}
+
+
+/* =====================================================
+   TABLET / LARGE MOBILE
+   <= 900px
+===================================================== */
+
+@media (max-width: 900px) {
+
+    /* HEADER */
+
+    .header {
+        min-height: 82px;
+
+        padding:
+            15px
+            20px;
+    }
+
+    .logo-symbol {
+        width: 48px;
+        height: 48px;
+    }
+
+    .logo-name img {
+        width: 155px;
+    }
+
+    .header-title {
+        display: none;
+    }
+
+    .header-number {
+        font-size: 8px;
+        letter-spacing: 2px;
+    }
+
+
+    /* PRODUCT */
+
+    .product-page {
+        width: 100%;
+
+        padding:
+            35px
+            20px
+            60px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 0;
+
+        align-items: stretch;
+    }
+
+
+    /* IMAGE */
+
+    .product-visual {
+        width: 100%;
+
+        aspect-ratio: 1 / 1;
+
+        flex-shrink: 0;
+    }
+
+
+    /* INFORMATION */
+
+    .product-information {
+        width: 100%;
+
+        max-width: none;
+
+        padding-top: 50px;
+    }
+
+
+    /* TITLE */
+
+    h1 {
+        font-size: clamp(55px, 13vw, 85px);
+
+        line-height: 0.88;
+
+        letter-spacing: -3px;
+    }
+
+
+    /* DESCRIPTION */
+
+    .description {
+        max-width: 650px;
+
+        font-size: 13px;
+
+        line-height: 1.8;
+    }
+
+
+    /* INFORMATION */
+
+    .information {
+        margin-top: 32px;
+    }
+
+
+    /* BUTTON */
+
+    .company-button {
+        min-height: 60px;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+        padding:
+            20px;
+
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+
+        text-align: left;
+    }
+
+    .footer-center {
+        text-align: left;
+    }
+
+    .footer-location {
+        text-align: left;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+   <= 600px
+===================================================== */
+
+@media (max-width: 600px) {
+
+    /* BODY */
+
+    body {
+        min-width: 0;
+    }
+
+
+    /* HEADER */
+
+    .header {
+        min-height: 75px;
+
+        padding:
+            12px
+            16px;
+    }
+
+    .event-logo {
+        gap: 9px;
+
+        min-width: 0;
+    }
+
+    .logo-symbol {
+        width: 42px;
+        height: 42px;
+    }
+
+    .logo-name {
+        min-width: 0;
+    }
+
+    .logo-name img {
+        width: auto;
+        max-width: 100%;
+        margin-bottom:  5px;
+        margin-top:  5px;
+    }
+
+    .header-number {
+        display: none;
+    }
+
+
+    /* PRODUCT PAGE */
+
+    .product-page {
+        width: 100%;
+
+        padding:
+            25px
+            16px
+            50px;
+    }
+
+
+    /* PRODUCT IMAGE */
+
+    .product-visual {
+        width: 100%;
+        aspect-ratio: auto;
+        overflow: visible;
+    }
+
+    .image-wrapper img {
+        object-fit: cover;
+    }
+
+
+    /* CORNERS */
+
+    .image-corner {
+        width: 25px;
+        height: 25px;
+    }
+
+    .top-left {
+        top: 14px;
+        right: 14px;
+    }
+
+    .bottom-right {
+        bottom: 14px;
+        right: 14px;
+    }
+
+
+    /* INFORMATION */
+
+    .product-information {
+        padding-top: 38px;
+    }
+
+
+    /* TITLE */
+
+    h1 {
+        font-size: clamp(48px, 16vw, 76px);
+
+        line-height: 0.88;
+
+        letter-spacing: -2.5px;
+    }
+
+    h1 span {
+        margin-left: 12px;
+    }
+
+
+    /* DESCRIPTION */
+
+    .description {
+        margin-top: 27px;
+
+        font-size: 13px;
+
+        line-height: 1.75;
+    }
+
+    .second-description {
+        margin-top: 10px;
+    }
+
+
+    /* INFORMATION */
+
+    .information {
+        margin-top: 30px;
+    }
+
+    .information-row {
+        min-height: 64px;
+
+        grid-template-columns:
+            minmax(90px, 0.7fr)
+            minmax(0, 1.3fr);
+
+        gap: 12px;
+    }
+
+    .information-row span {
+        font-size: 7px;
+
+        letter-spacing: 2px;
+    }
+
+    .information-row strong {
+        font-size: 11px;
+
+        line-height: 1.6;
+    }
+
+
+    /* BUTTON */
+
+    .company-button {
+        min-height: 58px;
+
+        margin-top: 30px;
+
+        padding:
+            0
+            16px;
+    }
+
+    .company-button span {
+        font-size: 8px;
+
+        letter-spacing: 1.5px;
+    }
+
+    .company-button strong {
+        font-size: 21px;
+    }
+
+
+    /* SOURCE NOTE */
+
+    .source-note {
+        font-size: 8px;
+
+        line-height: 1.7;
+
+        margin-top: 13px;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+        padding: 20px 16px;
+    }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+   <= 400px
+===================================================== */
+
+@media (max-width: 400px) {
+
+    /* HEADER */
+
+    .header {
+        padding:
+            10px
+            13px;
+    }
+
+    .logo-symbol {
+        width: 37px;
+        height: 37px;
+    }
+
+    .logo-name img {
+        width: auto;
+    }
+
+
+    /* PRODUCT */
+
+    .product-page {
+        padding:
+            20px
+            13px
+            45px;
+    }
+
+
+    /* IMAGE */
+
+    .product-visual {
+        aspect-ratio: 1 / 1.08;
+    }
+
+
+    /* TITLE */
+
+    h1 {
+        font-size: clamp(43px, 16vw, 65px);
+
+        letter-spacing: -2px;
+    }
+
+
+    /* DESCRIPTION */
+
+    .description {
+        font-size: 12px;
+
+        line-height: 1.72;
+    }
+
+
+    /* INFORMATION */
+
+    .information-row {
+        grid-template-columns:
+            90px
+            minmax(0, 1fr);
+
+        gap: 8px;
+    }
+
+    .information-row strong {
+        font-size: 10px;
+    }
+
+
+    /* BUTTON */
+
+    .company-button {
+        min-height: 56px;
+
+        padding:
+            0
+            13px;
+    }
+
+    .company-button span {
+        font-size: 7px;
+
+        letter-spacing: 1.2px;
+    }
+
+    .company-button strong {
+        font-size: 19px;
+    }
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+   <= 340px
+===================================================== */
+
+@media (max-width: 340px) {
+
+    .logo-symbol {
+        width: 34px;
+        height: 34px;
+    }
+
+    .logo-name img {
+        width: auto;
+    }
+
+    .product-page {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    h1 {
+        font-size: 42px;
+
+        letter-spacing: -1.5px;
+    }
+
+    .description {
+        font-size: 11px;
+    }
+
+    .information-row {
+        grid-template-columns: 80px 1fr;
+    }
+
+    .company-button span {
+        font-size: 6.5px;
+    }
+}
+
+
+/* =====================================================
+   TOUCH DEVICES
+   Remove desktop hover movement on phones
+===================================================== */
+
+@media (hover: none) {
+
+    .product-visual:hover .image-wrapper img {
+        transform: scale(1.01);
+    }
+
+    .company-button:hover {
+        color: var(--white);
+
+        border-color:
+            #978174;
+
+        transform: none;
+    }
+
+    .company-button:hover::before {
+        transform: translateX(-101%);
+    }
+
+    .company-button:hover strong {
+        transform: none;
+    }
+}
+
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}
+
